@@ -1,7 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Box, Button, Typography } from '@mui/material'
-import Grid from '@/shared/components/Grid'
+import Grid from '@/shared/components/Grid/Grid'
+import { sampleRows, sampleColumns } from '@/shared/components/Grid/PlayerGrid'
 import PlayerDetails from '@/shared/components/PlayerDetails'
 import { samplePlayer } from '@/data/SamplePlayer'
 
@@ -31,12 +32,14 @@ const Player: NextPage = () => {
             <strong>...</strong>
           </Button>
         </Box>
+
         <Typography sx={{ marginBottom: '1rem', borderBottom: '1px solid' }}>Current Season</Typography>
-        <Grid />
+        <Grid rows={sampleRows} columns={sampleColumns} />
         <Typography sx={{ marginBottom: '1rem', marginTop: '2rem', borderBottom: '1px solid' }}>Previous Season</Typography>
-        <Grid />
+        <Grid rows={sampleRows} columns={sampleColumns} />
         <Typography sx={{ marginBottom: '1rem', marginTop: '2rem', borderBottom: '1px solid' }}>This Season</Typography>
-        <Grid />
+
+        <Grid rows={sampleRows} columns={sampleColumns} />
       </Box>
     </>
   )
