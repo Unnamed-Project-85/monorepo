@@ -2,18 +2,16 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Box } from '@mui/material'
 import Grid from '@/shared/components/Grid/Grid'
+import { GridColDef } from '@mui/x-data-grid'
+import useSWR from 'swr'
 import { SampleTeam } from 'data/SampleTeam'
 import TeamDetails from '@/shared/components/TeamDetails'
 import PlayerTactics from '@/shared/components/PlayerTactics'
 import TeamTactics from '@/shared/components/TeamTactics'
-import { GridColDef } from '@mui/x-data-grid'
-import useSWR from 'swr'
-
-const fetcher = (url: string) => fetch(url).then(res => res.json())
-const PLAYER_API = 'http://localhost:8082/players'
+import fetcher from '@/libs/fetcher'
 
 const Team: NextPage = () => {
-  const { data, isLoading } = useSWR(PLAYER_API, fetcher)
+  const { data, isLoading } = useSWR('/players', fetcher)
 
   const columns: GridColDef[] = [
     {
