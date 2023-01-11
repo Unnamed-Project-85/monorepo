@@ -1,9 +1,9 @@
 import React from 'react'
-import {Box, Button, Card, CardContent, CardHeader, TextField} from '@mui/material'
-import {Controller, useForm} from 'react-hook-form'
-import {CenterContainer} from '@/shared/layout'
-import {NextPageWithLayout} from '@/pages/_app'
-import {AUTH_ENDPOINT} from '@/config/config'
+import { Box, Button, Card, CardContent, CardHeader, TextField } from '@mui/material'
+import { Controller, useForm } from 'react-hook-form'
+import { CenterContainer } from '@/shared/layout'
+import { NextPageWithLayout } from '@/pages/_app'
+import { API_HOST } from '@/config/config'
 
 interface SignUpFormValues {
   username: string
@@ -14,12 +14,12 @@ interface SignUpFormValues {
 const SignUpPage: NextPageWithLayout = () => {
   const { handleSubmit, control, watch } = useForm<SignUpFormValues>({
     mode: 'onBlur',
-    reValidateMode: 'onChange',
+    reValidateMode: 'onChange'
   })
 
   return (
     <Card>
-      <CardHeader title="Create an account" component={Box} />
+      <CardHeader title='Create an account' component={Box} />
       <CardContent>
         <form
           css={{
@@ -27,15 +27,15 @@ const SignUpPage: NextPageWithLayout = () => {
             flexDirection: 'column',
             alignContent: 'center',
             justifyContent: 'center',
-            rowGap: '1rem',
+            rowGap: '1rem'
           }}
           onSubmit={handleSubmit(async ({ username, password }) => {
-              const response = await fetch(`${AUTH_ENDPOINT}/auth/sign-up`, {
+            const response = await fetch(`${API_HOST}/auth/sign-up`, {
               method: 'POST',
               body: JSON.stringify({ username, password }),
               headers: {
-                'Content-Type': 'application/json',
-              },
+                'Content-Type': 'application/json'
+              }
             })
             if (response.ok) {
               console.info('Account created successfully', response.json())
@@ -44,14 +44,14 @@ const SignUpPage: NextPageWithLayout = () => {
             }
           })}>
           <Controller
-            name="username"
+            name='username'
             control={control}
-            defaultValue=""
+            defaultValue=''
             rules={{ required: 'Username required' }}
             render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
               <TextField
-                label="Username"
-                variant="filled"
+                label='Username'
+                variant='filled'
                 value={value}
                 onChange={onChange}
                 onBlur={onBlur}
@@ -61,50 +61,50 @@ const SignUpPage: NextPageWithLayout = () => {
             )}
           />
           <Controller
-            name="password"
+            name='password'
             control={control}
-            defaultValue=""
+            defaultValue=''
             rules={{ required: 'Password required' }}
             render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
               <TextField
-                label="Password"
-                variant="filled"
+                label='Password'
+                variant='filled'
                 value={value}
                 onChange={onChange}
                 onBlur={onBlur}
                 error={!!error}
                 helperText={error ? error.message : null}
-                type="password"
+                type='password'
               />
             )}
           />
           <Controller
-            name="confirmPassword"
+            name='confirmPassword'
             control={control}
-            defaultValue=""
+            defaultValue=''
             rules={{
               required: 'Password required',
               validate: (val: string) => {
                 if (watch('password') != val) {
                   return 'Your passwords do no match'
                 }
-              },
+              }
             }}
             render={({ field: { onChange, onBlur, value }, fieldState: { error } }) => (
               <TextField
-                label="Confirm Password"
-                variant="filled"
+                label='Confirm Password'
+                variant='filled'
                 value={value}
                 onChange={onChange}
                 onBlur={onBlur}
                 error={!!error}
                 helperText={error ? error.message : null}
-                type="password"
+                type='password'
               />
             )}
           />
           <div>
-            <Button type="submit" variant="contained" color="primary">
+            <Button type='submit' variant='contained' color='primary'>
               Sign Up
             </Button>
           </div>

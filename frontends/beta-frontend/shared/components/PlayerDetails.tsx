@@ -12,7 +12,7 @@ const playerStatsStyle = {
   width: '170px',
   height: '28px',
   margin: '2px 0',
-  paddingLeft: '1rem'
+  paddingLeft: '1rem',
 }
 
 type PlayerDetailsProps = {
@@ -24,46 +24,46 @@ export const PlayerDetails: FC<PlayerDetailsProps> = ({ player }) => (
     sx={{
       display: 'flex',
       marginBottom: '2rem',
-      alignItems: 'center'
+      alignItems: 'center',
     }}>
     <Avatar />
     <Box
       sx={{
-        marginLeft: '3rem'
+        marginLeft: '3rem',
       }}>
-      <Typography variant='body1'>
+      <Typography variant="body1">
         <strong>{player.name}</strong>
       </Typography>
       <Box sx={{ display: 'flex', alignItems: 'center' }}>
         <TransferWithinAStationIcon sx={{ fontSize: 'large', color: '#A4BC10', marginRight: '4px' }} />
-        <Typography variant='body1' sx={{ color: '#A4BC10' }}>
+        <Typography variant="body1" sx={{ color: '#A4BC10' }}>
           {player.position}
         </Typography>
       </Box>
-      <Typography variant='body1'>{player.age}</Typography>
+      <Typography variant="body1">{player.age}</Typography>
     </Box>
     <Box sx={{ marginLeft: '2rem' }}>
-      <Typography variant='body1' component='p' sx={playerStatsStyle}>
+      <Typography variant="body1" component="p" sx={playerStatsStyle}>
         {player.stats.DEFENSE_POSITION} - Defense
       </Typography>
-      <Typography variant='body1' component='p' sx={playerStatsStyle}>
+      <Typography variant="body1" component="p" sx={playerStatsStyle}>
         {player.stats.BALL_CONTROL} - BallControl
       </Typography>
-      <Typography variant='body1' component='p' sx={playerStatsStyle}>
+      <Typography variant="body1" component="p" sx={playerStatsStyle}>
         {player.stats.SCORE} - Score
       </Typography>
     </Box>
     <Box
       sx={{
-        marginLeft: '2rem'
+        marginLeft: '2rem',
       }}>
-      <Typography variant='body1' component='p' sx={playerStatsStyle}>
+      <Typography variant="body1" component="p" sx={playerStatsStyle}>
         {player.stats.TACKLING} - Tackling
       </Typography>
-      <Typography variant='body1' component='p' sx={playerStatsStyle}>
+      <Typography variant="body1" component="p" sx={playerStatsStyle}>
         {player.stats.CO} - CO
       </Typography>
-      <Typography variant='body1' component='p' sx={playerStatsStyle}>
+      <Typography variant="body1" component="p" sx={playerStatsStyle}>
         {player.stats.PASSING} - Passing
       </Typography>
     </Box>

@@ -30,17 +30,17 @@ interface MyExtendedPageProps {
 const defaultGetLayout = (page: ReactElement) => <Layout>{page}</Layout>
 
 export default function MyApp({
-  Component,
-  emotionCache = clientSideEmotionCache,
-  pageProps: { session, ...pageProps },
-}: MyAppProps<MyExtendedPageProps>) {
+                                Component,
+                                emotionCache = clientSideEmotionCache,
+                                pageProps: { session, ...pageProps }
+                              }: MyAppProps<MyExtendedPageProps>) {
   const getLayout = Component.getLayout ?? defaultGetLayout
 
   return (
     <SessionProvider session={session}>
       <CacheProvider value={emotionCache}>
         <Head>
-          <meta name="viewport" content="initial-scale=1, width=device-width" />
+          <meta name='viewport' content='initial-scale=1, width=device-width' />
           <title>Kjeldsen</title>
         </Head>
         <ThemeProvider theme={theme}>
